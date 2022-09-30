@@ -1,26 +1,3 @@
-<?php
-
-$conn = mysqli_connect('localhost','root','','contact_db') or die('connection failed');
-
-if(isset($_POST['submit'])){
-
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $number = $_POST['number'];
-   $date = $_POST['date'];
-
-   $insert = mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, date) VALUES('$name','$email','$number','$date')") or die('query failed');
-
-   if($insert){
-      $message[] = 'appointment made successfully!';
-   }else{
-      $message[] = 'appointment failed';
-   }
-
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,14 +184,8 @@ if(isset($_POST['submit'])){
 
    <h1 class="heading">make appointment</h1>
 
-   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      <?php 
-         if(isset($message)){
-            foreach($message as $message){
-               echo '<p class="message">'.$message.'</p>';
-            }
-         }
-      ?>
+   <form action="" method="post">
+
       <span>your name :</span>
       <input type="text" name="name" placeholder="enter your name" class="box" required>
       <span>your email :</span>
